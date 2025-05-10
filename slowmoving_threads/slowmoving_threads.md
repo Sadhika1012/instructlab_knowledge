@@ -1,551 +1,104 @@
-- **main_0x000000012C0A1B00,**:
-  - **thread_name**: main
-  - **J9VMThread**: 0x000000012C0A1B00,
+# Thread Information and Field Descriptions
+
+## Thread Information
+- **Thread Name_J9VMThread**: Each thread is identified with a unique combination of its name and the J9VMThread identifier. For example, **Worker-10_0x000000013D1A3E00**. This helps in uniquely identifying the thread among others.
+
+## Timestamps and Details
+Each timestamp represents a snapshot of the thread's state at a specific moment in time. The details under each timestamp provide information about the thread's behavior and resource usage.
+
+### Timestamp
+- **Timestamp**: This indicates the exact date and time when the snapshot was taken. The timestamp has two parts:
+  - **Date**: In the format **yyyy/mm/dd**. For example, **2025/04/30**.
+  - **Time**: In the format **hour:minute:second:millisecond**. For example, **17:33:08:559**.
+
+### Thread State
+- **Thread State**: This field describes the current state of the thread. Common states include:
+  - **Runnable**: The thread is ready to run and is waiting for CPU time.
+  - **Condition Wait**: The thread is waiting for a specific condition to be met.
+  - **Suspended**: The thread is temporarily paused.
+  - **Zombie**: The thread has finished execution but has not yet been cleaned up by the system.
+  - **Parked**: The thread is parked, waiting for a signal to continue.
+  - **Blocked**: The thread is waiting for a resource, such as a lock, to become available.
+
+### CPU Usage
+- **CPU Usage**: This field indicates the amount of CPU time the thread has used, expressed in seconds. For example, **0.012340000** means the thread has used 0.01234 seconds of CPU time.
+
+### Blocked On
+- **Blocked On**: This section is populated only when the thread state is **Blocked**. It provides details about the resource the thread is waiting for. If the thread is not blocked, this field is specified as **Not Applicable**. When populated it includes:
+  - **Object**: The specific object the thread is blocked on, often a lock or monitor. For example, **java/util/concurrent/locks/ReentrantLock@0x000000030007BF20**.
+  - **Owned By**: The thread that currently holds the resource the blocked thread is waiting for. For example, **Worker-7**.
+
+### Java Call Stack
+- **Java Call Stack**: This is a list of method calls that were active in the thread at the time of the snapshot. It shows the sequence of method calls leading up to the current point. Each entry includes:
+  - **Class and Method**: The class and method where the call occurred. For example, **com/example/pipeline/TaskQueue.dequeue**.
+  - **File and Line Number**: The source file and line number where the method call is located. For example, **TaskQueue.java:120**.
+
+## Example Breakdown
+Let's break down one of the timestamps as an example:
+
+### Complete Thread
+### - **Worker-10_0x000000013D1A3E00**:
+  - **thread_name**: Worker-10  
+  - **J9VMThread**: 0x000000013D1A3E00  
   - **timestamps**:
-    - **2025/04/30 17:31:08:559**:
-      - **thread_state**: Parked
-      - **cpu_usage**: 0.198938000
-      - **blocked_on**: Not Applicable
-      - **Java_Call_Stack**:
-        - jdk/internal/misc/Unsafe.park(Native Method)
-        - java/util/concurrent/locks/LockSupport.parkNanos(LockSupport.java:269)
-        - java/util/concurrent/locks/AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1763)
-        - java/util/concurrent/ThreadPoolExecutor.awaitTermination(ThreadPoolExecutor.java:1475)
-        - DataPipelineExecutor.main(DataPipelineExecutor.java:48)
-    - **2025/04/30 17:31:48:655**:
-      - **thread_state**: Parked
-      - **cpu_usage**: 0.198938000
-      - **blocked_on**: Not Applicable
-      - **Java_Call_Stack**:
-        - jdk/internal/misc/Unsafe.park(Native Method)
-        - java/util/concurrent/locks/LockSupport.parkNanos(LockSupport.java:269)
-        - java/util/concurrent/locks/AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1763)
-        - java/util/concurrent/ThreadPoolExecutor.awaitTermination(ThreadPoolExecutor.java:1475)
-        - DataPipelineExecutor.main(DataPipelineExecutor.java:48)
-    - **2025/04/30 17:32:38:800**:
-      - **thread_state**: Parked
-      - **cpu_usage**: 0.198938000
-      - **blocked_on**: Not Applicable
-      - **Java_Call_Stack**:
-        - jdk/internal/misc/Unsafe.park(Native Method)
-        - java/util/concurrent/locks/LockSupport.parkNanos(LockSupport.java:269)
-        - java/util/concurrent/locks/AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1763)
-        - java/util/concurrent/ThreadPoolExecutor.awaitTermination(ThreadPoolExecutor.java:1475)
-        - DataPipelineExecutor.main(DataPipelineExecutor.java:48)
-- **JIT Compilation Thread-000_0x000000012C0B6100,**:
-  - **thread_name**: JIT Compilation Thread-000
-  - **J9VMThread**: 0x000000012C0B6100,
-  - **timestamps**:
-    - **2025/04/30 17:31:08:559**:
-      - **thread_state**: Condition Wait
-      - **cpu_usage**: 0.038188000
-      - **blocked_on**: Not Applicable
-      - **Java_Call_Stack**:
-    - **2025/04/30 17:31:48:655**:
-      - **thread_state**: Condition Wait
-      - **cpu_usage**: 0.043134000
-      - **blocked_on**: Not Applicable
-      - **Java_Call_Stack**:
-    - **2025/04/30 17:32:38:800**:
-      - **thread_state**: Condition Wait
-      - **cpu_usage**: 0.049899000
-      - **blocked_on**: Not Applicable
-      - **Java_Call_Stack**:
-- **JIT Compilation Thread-001 Suspended_0x000000011B81B100,**:
-  - **thread_name**: JIT Compilation Thread-001 Suspended
-  - **J9VMThread**: 0x000000011B81B100,
-  - **timestamps**:
-    - **2025/04/30 17:31:08:559**:
-      - **thread_state**: Condition Wait
-      - **cpu_usage**: 0.000014000
-      - **blocked_on**: Not Applicable
-      - **Java_Call_Stack**:
-    - **2025/04/30 17:31:48:655**:
-      - **thread_state**: Condition Wait
-      - **cpu_usage**: 0.000014000
-      - **blocked_on**: Not Applicable
-      - **Java_Call_Stack**:
-    - **2025/04/30 17:32:38:800**:
-      - **thread_state**: Condition Wait
-      - **cpu_usage**: 0.000014000
-      - **blocked_on**: Not Applicable
-      - **Java_Call_Stack**:
-- **JIT Compilation Thread-002 Suspended_0x000000011B823900,**:
-  - **thread_name**: JIT Compilation Thread-002 Suspended
-  - **J9VMThread**: 0x000000011B823900,
-  - **timestamps**:
-    - **2025/04/30 17:31:08:559**:
-      - **thread_state**: Condition Wait
-      - **cpu_usage**: 0.000009000
-      - **blocked_on**: Not Applicable
-      - **Java_Call_Stack**:
-    - **2025/04/30 17:31:48:655**:
-      - **thread_state**: Condition Wait
-      - **cpu_usage**: 0.000009000
-      - **blocked_on**: Not Applicable
-      - **Java_Call_Stack**:
-    - **2025/04/30 17:32:38:800**:
-      - **thread_state**: Condition Wait
-      - **cpu_usage**: 0.000009000
-      - **blocked_on**: Not Applicable
-      - **Java_Call_Stack**:
-- **JIT Compilation Thread-003 Suspended_0x000000011B82C700,**:
-  - **thread_name**: JIT Compilation Thread-003 Suspended
-  - **J9VMThread**: 0x000000011B82C700,
-  - **timestamps**:
-    - **2025/04/30 17:31:08:559**:
-      - **thread_state**: Condition Wait
-      - **cpu_usage**: 0.000008000
-      - **blocked_on**: Not Applicable
-      - **Java_Call_Stack**:
-    - **2025/04/30 17:31:48:655**:
-      - **thread_state**: Condition Wait
-      - **cpu_usage**: 0.000008000
-      - **blocked_on**: Not Applicable
-      - **Java_Call_Stack**:
-    - **2025/04/30 17:32:38:800**:
-      - **thread_state**: Condition Wait
-      - **cpu_usage**: 0.000008000
-      - **blocked_on**: Not Applicable
-      - **Java_Call_Stack**:
-- **JIT Compilation Thread-004 Suspended_0x000000011B836700,**:
-  - **thread_name**: JIT Compilation Thread-004 Suspended
-  - **J9VMThread**: 0x000000011B836700,
-  - **timestamps**:
-    - **2025/04/30 17:31:08:559**:
-      - **thread_state**: Condition Wait
-      - **cpu_usage**: 0.000009000
-      - **blocked_on**: Not Applicable
-      - **Java_Call_Stack**:
-    - **2025/04/30 17:31:48:655**:
-      - **thread_state**: Condition Wait
-      - **cpu_usage**: 0.000009000
-      - **blocked_on**: Not Applicable
-      - **Java_Call_Stack**:
-    - **2025/04/30 17:32:38:800**:
-      - **thread_state**: Condition Wait
-      - **cpu_usage**: 0.000009000
-      - **blocked_on**: Not Applicable
-      - **Java_Call_Stack**:
-- **JIT Compilation Thread-005 Suspended_0x000000011B83F500,**:
-  - **thread_name**: JIT Compilation Thread-005 Suspended
-  - **J9VMThread**: 0x000000011B83F500,
-  - **timestamps**:
-    - **2025/04/30 17:31:08:559**:
-      - **thread_state**: Condition Wait
-      - **cpu_usage**: 0.000009000
-      - **blocked_on**: Not Applicable
-      - **Java_Call_Stack**:
-    - **2025/04/30 17:31:48:655**:
-      - **thread_state**: Condition Wait
-      - **cpu_usage**: 0.000009000
-      - **blocked_on**: Not Applicable
-      - **Java_Call_Stack**:
-    - **2025/04/30 17:32:38:800**:
-      - **thread_state**: Condition Wait
-      - **cpu_usage**: 0.000009000
-      - **blocked_on**: Not Applicable
-      - **Java_Call_Stack**:
-- **JIT Compilation Thread-006 Suspended_0x000000011B848300,**:
-  - **thread_name**: JIT Compilation Thread-006 Suspended
-  - **J9VMThread**: 0x000000011B848300,
-  - **timestamps**:
-    - **2025/04/30 17:31:08:559**:
-      - **thread_state**: Condition Wait
-      - **cpu_usage**: 0.000007000
-      - **blocked_on**: Not Applicable
-      - **Java_Call_Stack**:
-    - **2025/04/30 17:31:48:655**:
-      - **thread_state**: Condition Wait
-      - **cpu_usage**: 0.000007000
-      - **blocked_on**: Not Applicable
-      - **Java_Call_Stack**:
-    - **2025/04/30 17:32:38:800**:
-      - **thread_state**: Condition Wait
-      - **cpu_usage**: 0.000007000
-      - **blocked_on**: Not Applicable
-      - **Java_Call_Stack**:
-- **JIT Diagnostic Compilation Thread-007 Suspended_0x000000011B852300,**:
-  - **thread_name**: JIT Diagnostic Compilation Thread-007 Suspended
-  - **J9VMThread**: 0x000000011B852300,
-  - **timestamps**:
-    - **2025/04/30 17:31:08:559**:
-      - **thread_state**: Condition Wait
-      - **cpu_usage**: 0.000007000
-      - **blocked_on**: Not Applicable
-      - **Java_Call_Stack**:
-    - **2025/04/30 17:31:48:655**:
-      - **thread_state**: Condition Wait
-      - **cpu_usage**: 0.000007000
-      - **blocked_on**: Not Applicable
-      - **Java_Call_Stack**:
-    - **2025/04/30 17:32:38:800**:
-      - **thread_state**: Condition Wait
-      - **cpu_usage**: 0.000007000
-      - **blocked_on**: Not Applicable
-      - **Java_Call_Stack**:
-- **JIT-SamplerThread_0x000000011B8AFD00,**:
-  - **thread_name**: JIT-SamplerThread
-  - **J9VMThread**: 0x000000011B8AFD00,
-  - **timestamps**:
-    - **2025/04/30 17:31:08:559**:
-      - **thread_state**: Blocked
-      - **cpu_usage**: 0.017063000
-      - **blocked_on**: Not Applicable
-      - **Java_Call_Stack**:
-    - **2025/04/30 17:31:48:655**:
-      - **thread_state**: Condition Wait
-      - **cpu_usage**: 0.025619000
-      - **blocked_on**: Not Applicable
-      - **Java_Call_Stack**:
-    - **2025/04/30 17:32:38:800**:
-      - **thread_state**: Condition Wait
-      - **cpu_usage**: 0.033246000
-      - **blocked_on**: Not Applicable
-      - **Java_Call_Stack**:
-- **IProfiler_0x000000012B810700,**:
-  - **thread_name**: IProfiler
-  - **J9VMThread**: 0x000000012B810700,
-  - **timestamps**:
-    - **2025/04/30 17:31:08:559**:
-      - **thread_state**: Condition Wait
-      - **cpu_usage**: 0.023168000
-      - **blocked_on**: Not Applicable
-      - **Java_Call_Stack**:
-    - **2025/04/30 17:31:48:655**:
-      - **thread_state**: Condition Wait
-      - **cpu_usage**: 0.024536000
-      - **blocked_on**: Not Applicable
-      - **Java_Call_Stack**:
-    - **2025/04/30 17:32:38:800**:
-      - **thread_state**: Condition Wait
-      - **cpu_usage**: 0.029228000
-      - **blocked_on**: Not Applicable
-      - **Java_Call_Stack**:
-- **Common-Cleaner_0x000000012C0DB700,**:
-  - **thread_name**: Common-Cleaner
-  - **J9VMThread**: 0x000000012C0DB700,
-  - **timestamps**:
-    - **2025/04/30 17:31:08:559**:
-      - **thread_state**: Condition Wait
-      - **cpu_usage**: 0.000113000
-      - **blocked_on**: Not Applicable
-      - **Java_Call_Stack**:
-        - java/lang/Object.waitImpl(Native Method)
-        - java/lang/Object.wait(Object.java:255)
-        - java/lang/Object.wait(Object.java:221)
-        - java/lang/ref/ReferenceQueue.remove(ReferenceQueue.java:137)
-        - jdk/internal/ref/CleanerImpl.run(CleanerImpl.java:140)
-        - java/lang/Thread.runWith(Thread.java:1608)
-        - java/lang/Thread.run(Thread.java:1595)
-        - jdk/internal/misc/InnocuousThread.run(InnocuousThread.java:186)
-    - **2025/04/30 17:31:48:655**:
-      - **thread_state**: Condition Wait
-      - **cpu_usage**: 0.000113000
-      - **blocked_on**: Not Applicable
-      - **Java_Call_Stack**:
-        - java/lang/Object.waitImpl(Native Method)
-        - java/lang/Object.wait(Object.java:255)
-        - java/lang/Object.wait(Object.java:221)
-        - java/lang/ref/ReferenceQueue.remove(ReferenceQueue.java:137)
-        - jdk/internal/ref/CleanerImpl.run(CleanerImpl.java:140)
-        - java/lang/Thread.runWith(Thread.java:1608)
-        - java/lang/Thread.run(Thread.java:1595)
-        - jdk/internal/misc/InnocuousThread.run(InnocuousThread.java:186)
-    - **2025/04/30 17:32:38:800**:
-      - **thread_state**: Condition Wait
-      - **cpu_usage**: 0.000195000
-      - **blocked_on**: Not Applicable
-      - **Java_Call_Stack**:
-        - java/lang/Object.waitImpl(Native Method)
-        - java/lang/Object.wait(Object.java:255)
-        - java/lang/Object.wait(Object.java:221)
-        - java/lang/ref/ReferenceQueue.remove(ReferenceQueue.java:137)
-        - jdk/internal/ref/CleanerImpl.run(CleanerImpl.java:140)
-        - java/lang/Thread.runWith(Thread.java:1608)
-        - java/lang/Thread.run(Thread.java:1595)
-        - jdk/internal/misc/InnocuousThread.run(InnocuousThread.java:186)
-- **Concurrent Mark Helper_0x000000012C107F00,**:
-  - **thread_name**: Concurrent Mark Helper
-  - **J9VMThread**: 0x000000012C107F00,
-  - **timestamps**:
-    - **2025/04/30 17:31:08:559**:
-      - **thread_state**: Condition Wait
-      - **cpu_usage**: 0.000023000
-      - **blocked_on**: Not Applicable
-      - **Java_Call_Stack**:
-    - **2025/04/30 17:31:48:655**:
-      - **thread_state**: Condition Wait
-      - **cpu_usage**: 0.000023000
-      - **blocked_on**: Not Applicable
-      - **Java_Call_Stack**:
-    - **2025/04/30 17:32:38:800**:
-      - **thread_state**: Condition Wait
-      - **cpu_usage**: 0.000023000
-      - **blocked_on**: Not Applicable
-      - **Java_Call_Stack**:
-- **GC Worker_0x000000012C114F00,**:
-  - **thread_name**: GC Worker
-  - **J9VMThread**: 0x000000012C114F00,
-  - **timestamps**:
-    - **2025/04/30 17:31:08:559**:
-      - **thread_state**: Condition Wait
-      - **cpu_usage**: 0.000571000
-      - **blocked_on**: Not Applicable
-      - **Java_Call_Stack**:
-    - **2025/04/30 17:31:48:655**:
-      - **thread_state**: Condition Wait
-      - **cpu_usage**: 0.000571000
-      - **blocked_on**: Not Applicable
-      - **Java_Call_Stack**:
-    - **2025/04/30 17:32:38:800**:
-      - **thread_state**: Condition Wait
-      - **cpu_usage**: 0.000571000
-      - **blocked_on**: Not Applicable
-      - **Java_Call_Stack**:
-- **GC Worker_0x000000012C11F100,**:
-  - **thread_name**: GC Worker
-  - **J9VMThread**: 0x000000012C11F100,
-  - **timestamps**:
-    - **2025/04/30 17:31:08:559**:
-      - **thread_state**: Condition Wait
-      - **cpu_usage**: 0.000400000
-      - **blocked_on**: Not Applicable
-      - **Java_Call_Stack**:
-    - **2025/04/30 17:31:48:655**:
-      - **thread_state**: Condition Wait
-      - **cpu_usage**: 0.000400000
-      - **blocked_on**: Not Applicable
-      - **Java_Call_Stack**:
-    - **2025/04/30 17:32:38:800**:
-      - **thread_state**: Condition Wait
-      - **cpu_usage**: 0.000400000
-      - **blocked_on**: Not Applicable
-      - **Java_Call_Stack**:
-- **GC Worker_0x000000012C129700,**:
-  - **thread_name**: GC Worker
-  - **J9VMThread**: 0x000000012C129700,
-  - **timestamps**:
-    - **2025/04/30 17:31:08:559**:
-      - **thread_state**: Condition Wait
-      - **cpu_usage**: 0.000876000
-      - **blocked_on**: Not Applicable
-      - **Java_Call_Stack**:
-    - **2025/04/30 17:31:48:655**:
-      - **thread_state**: Condition Wait
-      - **cpu_usage**: 0.000876000
-      - **blocked_on**: Not Applicable
-      - **Java_Call_Stack**:
-    - **2025/04/30 17:32:38:800**:
-      - **thread_state**: Condition Wait
-      - **cpu_usage**: 0.000876000
-      - **blocked_on**: Not Applicable
-      - **Java_Call_Stack**:
-- **GC Worker_0x000000012C134F00,**:
-  - **thread_name**: GC Worker
-  - **J9VMThread**: 0x000000012C134F00,
-  - **timestamps**:
-    - **2025/04/30 17:31:08:559**:
-      - **thread_state**: Condition Wait
-      - **cpu_usage**: 0.000605000
-      - **blocked_on**: Not Applicable
-      - **Java_Call_Stack**:
-    - **2025/04/30 17:31:48:655**:
-      - **thread_state**: Condition Wait
-      - **cpu_usage**: 0.000605000
-      - **blocked_on**: Not Applicable
-      - **Java_Call_Stack**:
-    - **2025/04/30 17:32:38:800**:
-      - **thread_state**: Condition Wait
-      - **cpu_usage**: 0.000605000
-      - **blocked_on**: Not Applicable
-      - **Java_Call_Stack**:
-- **GC Worker_0x000000012C13F500,**:
-  - **thread_name**: GC Worker
-  - **J9VMThread**: 0x000000012C13F500,
-  - **timestamps**:
-    - **2025/04/30 17:31:08:559**:
-      - **thread_state**: Condition Wait
-      - **cpu_usage**: 0.000842000
-      - **blocked_on**: Not Applicable
-      - **Java_Call_Stack**:
-    - **2025/04/30 17:31:48:655**:
-      - **thread_state**: Condition Wait
-      - **cpu_usage**: 0.000842000
-      - **blocked_on**: Not Applicable
-      - **Java_Call_Stack**:
-    - **2025/04/30 17:32:38:800**:
-      - **thread_state**: Condition Wait
-      - **cpu_usage**: 0.000842000
-      - **blocked_on**: Not Applicable
-      - **Java_Call_Stack**:
-- **GC Worker_0x000000012C149B00,**:
-  - **thread_name**: GC Worker
-  - **J9VMThread**: 0x000000012C149B00,
-  - **timestamps**:
-    - **2025/04/30 17:31:08:559**:
-      - **thread_state**: Condition Wait
-      - **cpu_usage**: 0.000689000
-      - **blocked_on**: Not Applicable
-      - **Java_Call_Stack**:
-    - **2025/04/30 17:31:48:655**:
-      - **thread_state**: Condition Wait
-      - **cpu_usage**: 0.000689000
-      - **blocked_on**: Not Applicable
-      - **Java_Call_Stack**:
-    - **2025/04/30 17:32:38:800**:
-      - **thread_state**: Condition Wait
-      - **cpu_usage**: 0.000689000
-      - **blocked_on**: Not Applicable
-      - **Java_Call_Stack**:
-- **GC Worker_0x000000012C155300,**:
-  - **thread_name**: GC Worker
-  - **J9VMThread**: 0x000000012C155300,
-  - **timestamps**:
-    - **2025/04/30 17:31:08:559**:
-      - **thread_state**: Condition Wait
-      - **cpu_usage**: 0.000387000
-      - **blocked_on**: Not Applicable
-      - **Java_Call_Stack**:
-    - **2025/04/30 17:31:48:655**:
-      - **thread_state**: Condition Wait
-      - **cpu_usage**: 0.000387000
-      - **blocked_on**: Not Applicable
-      - **Java_Call_Stack**:
-    - **2025/04/30 17:32:38:800**:
-      - **thread_state**: Condition Wait
-      - **cpu_usage**: 0.000387000
-      - **blocked_on**: Not Applicable
-      - **Java_Call_Stack**:
-- **GC Worker_0x000000012C15F900,**:
-  - **thread_name**: GC Worker
-  - **J9VMThread**: 0x000000012C15F900,
-  - **timestamps**:
-    - **2025/04/30 17:31:08:559**:
-      - **thread_state**: Condition Wait
-      - **cpu_usage**: 0.000772000
-      - **blocked_on**: Not Applicable
-      - **Java_Call_Stack**:
-    - **2025/04/30 17:31:48:655**:
-      - **thread_state**: Condition Wait
-      - **cpu_usage**: 0.000772000
-      - **blocked_on**: Not Applicable
-      - **Java_Call_Stack**:
-    - **2025/04/30 17:32:38:800**:
-      - **thread_state**: Condition Wait
-      - **cpu_usage**: 0.000772000
-      - **blocked_on**: Not Applicable
-      - **Java_Call_Stack**:
-- **GC Worker_0x000000012C169F00,**:
-  - **thread_name**: GC Worker
-  - **J9VMThread**: 0x000000012C169F00,
-  - **timestamps**:
-    - **2025/04/30 17:31:08:559**:
-      - **thread_state**: Condition Wait
-      - **cpu_usage**: 0.000833000
-      - **blocked_on**: Not Applicable
-      - **Java_Call_Stack**:
-    - **2025/04/30 17:31:48:655**:
-      - **thread_state**: Condition Wait
-      - **cpu_usage**: 0.000833000
-      - **blocked_on**: Not Applicable
-      - **Java_Call_Stack**:
-    - **2025/04/30 17:32:38:800**:
-      - **thread_state**: Condition Wait
-      - **cpu_usage**: 0.000833000
-      - **blocked_on**: Not Applicable
-      - **Java_Call_Stack**:
-- **GC Worker_0x000000012C175700,**:
-  - **thread_name**: GC Worker
-  - **J9VMThread**: 0x000000012C175700,
-  - **timestamps**:
-    - **2025/04/30 17:31:08:559**:
-      - **thread_state**: Condition Wait
-      - **cpu_usage**: 0.000594000
-      - **blocked_on**: Not Applicable
-      - **Java_Call_Stack**:
-    - **2025/04/30 17:31:48:655**:
-      - **thread_state**: Condition Wait
-      - **cpu_usage**: 0.000594000
-      - **blocked_on**: Not Applicable
-      - **Java_Call_Stack**:
-    - **2025/04/30 17:32:38:800**:
-      - **thread_state**: Condition Wait
-      - **cpu_usage**: 0.000594000
-      - **blocked_on**: Not Applicable
-      - **Java_Call_Stack**:
-- **GC Worker_0x000000012C17FD00,**:
-  - **thread_name**: GC Worker
-  - **J9VMThread**: 0x000000012C17FD00,
-  - **timestamps**:
-    - **2025/04/30 17:31:08:559**:
-      - **thread_state**: Condition Wait
-      - **cpu_usage**: 0.000532000
-      - **blocked_on**: Not Applicable
-      - **Java_Call_Stack**:
-    - **2025/04/30 17:31:48:655**:
-      - **thread_state**: Condition Wait
-      - **cpu_usage**: 0.000532000
-      - **blocked_on**: Not Applicable
-      - **Java_Call_Stack**:
-    - **2025/04/30 17:32:38:800**:
-      - **thread_state**: Condition Wait
-      - **cpu_usage**: 0.000532000
-      - **blocked_on**: Not Applicable
-      - **Java_Call_Stack**:
-- **Finalizer thread_0x000000011B8E4300,**:
-  - **thread_name**: Finalizer thread
-  - **J9VMThread**: 0x000000011B8E4300,
-  - **timestamps**:
-    - **2025/04/30 17:31:08:559**:
-      - **thread_state**: Condition Wait
-      - **cpu_usage**: 0.000332000
-      - **blocked_on**: Not Applicable
-      - **Java_Call_Stack**:
-    - **2025/04/30 17:31:48:655**:
-      - **thread_state**: Condition Wait
-      - **cpu_usage**: 0.000332000
-      - **blocked_on**: Not Applicable
-      - **Java_Call_Stack**:
-    - **2025/04/30 17:32:38:800**:
-      - **thread_state**: Condition Wait
-      - **cpu_usage**: 0.000332000
-      - **blocked_on**: Not Applicable
-      - **Java_Call_Stack**:
-- **Attach API wait loop_0x000000012C1B6500,**:
-  - **thread_name**: Attach API wait loop
-  - **J9VMThread**: 0x000000012C1B6500,
-  - **timestamps**:
-    - **2025/04/30 17:31:08:559**:
-      - **thread_state**: Runnable
-      - **cpu_usage**: 0.000024000
-      - **blocked_on**: Not Applicable
-      - **Java_Call_Stack**:
-        - openj9/internal/tools/attach/target/IPC.waitSemaphore(Native Method)
-        - openj9/internal/tools/attach/target/CommonDirectory.waitSemaphore(CommonDirectory.java:264)
-        - openj9/internal/tools/attach/target/WaitLoop.waitForNotification(WaitLoop.java:66)
-        - openj9/internal/tools/attach/target/WaitLoop.run(WaitLoop.java:157)
-    - **2025/04/30 17:31:48:655**:
-      - **thread_state**: Runnable
-      - **cpu_usage**: 0.000024000
-      - **blocked_on**: Not Applicable
-      - **Java_Call_Stack**:
-        - openj9/internal/tools/attach/target/IPC.waitSemaphore(Native Method)
-        - openj9/internal/tools/attach/target/CommonDirectory.waitSemaphore(CommonDirectory.java:264)
-        - openj9/internal/tools/attach/target/WaitLoop.waitForNotification(WaitLoop.java:66)
-        - openj9/internal/tools/attach/target/WaitLoop.run(WaitLoop.java:157)
-    - **2025/04/30 17:32:38:800**:
-      - **thread_state**: Runnable
-      - **cpu_usage**: 0.000024000
-      - **blocked_on**: Not Applicable
-      - **Java_Call_Stack**:
-        - openj9/internal/tools/attach/target/IPC.waitSemaphore(Native Method)
-        - openj9/internal/tools/attach/target/CommonDirectory.waitSemaphore(CommonDirectory.java:264)
-        - openj9/internal/tools/attach/target/WaitLoop.waitForNotification(WaitLoop.java:66)
-        - openj9/internal/tools/attach/target/WaitLoop.run(WaitLoop.java:157)
-- **pool-1-thread-1_0x000000012C1A4F00,**:
+    - **2025/04/30 17:33:08:559**:
+      - **thread_state**: Blocked  
+      - **cpu_usage**: 0.012340000  
+      - **blocked_on**:
+        - **Object**: java/util/concurrent/locks/ReentrantLock@0x000000030007BF20  
+        - **Owned By**: Worker-7
+      - **Java_Call_Stack**:
+        - com/example/pipeline/TaskQueue.dequeue(TaskQueue.java:120)  
+        - com/example/pipeline/TaskProcessor.process(TaskProcessor.java:89)  
+        - com/example/pipeline/Worker.run(Worker.java:48)  
+        - java/lang/Thread.run(Thread.java:833)
+    - **2025/04/30 17:33:48:655**:
+      - **thread_state**: Blocked  
+      - **cpu_usage**: 0.014560000  
+      - **blocked_on**:
+        - **Object**: java/util/concurrent/locks/ReentrantLock@0x000000030007BF20  
+        - **Owned By**: Worker-6
+      - **Java_Call_Stack**:
+        - com/example/pipeline/TaskQueue.dequeue(TaskQueue.java:120)  
+        - com/example/pipeline/TaskProcessor.process(TaskProcessor.java:89)  
+        - com/example/pipeline/Worker.run(Worker.java:48)  
+        - java/lang/Thread.run(Thread.java:833)
+    - **2025/04/30 17:34:38:800**:
+      - **thread_state**: Runnable  
+      - **cpu_usage**: 0.018670000  
+      - **blocked_on**: None  
+      - **Java_Call_Stack**:
+        - com/example/pipeline/TaskQueue.dequeue(TaskQueue.java:120)  
+        - com/example/pipeline/TaskProcessor.process(TaskProcessor.java:89)  
+        - com/example/pipeline/Worker.run(Worker.java:48)  
+        - java/lang/Thread.run(Thread.java:833)
+
+### Breakdown of Timestamp: 2025/04/30 17:33:08:559
+- **Thread State**: Blocked
+  - The thread is waiting for a resource to become available.
+- **CPU Usage**: 0.012340000
+  - The thread has used 0.01234 seconds of CPU time.
+- **Blocked On**:
+  - **Object**: java/util/concurrent/locks/ReentrantLock@0x000000030007BF20
+    - The thread is waiting for a ReentrantLock object.
+  - **Owned By**: Worker-7
+    - The lock is currently held by the thread named Worker-7.
+- **Java Call Stack**:
+  - **com/example/pipeline/TaskQueue.dequeue(TaskQueue.java:120)**
+    - The thread is executing the dequeue method in the TaskQueue class at line 120.
+  - **com/example/pipeline/TaskProcessor.process(TaskProcessor.java:89)**
+    - The thread is executing the process method in the TaskProcessor class at line 89.
+  - **com/example/pipeline/Worker.run(Worker.java:48)**
+    - The thread is executing the run method in the Worker class at line 48.
+  - **java/lang/Thread.run(Thread.java:833)**
+    - The thread is executing the run method in the Thread class at line 833.
+
+## Additional Examples
+Here are 7 more examples of similar threads, with one timestamp explained in each.
+
+### - **pool-1-thread-1_0x000000012C1A4F00**:
   - **thread_name**: pool-1-thread-1
-  - **J9VMThread**: 0x000000012C1A4F00,
+  - **J9VMThread**: 0x000000012C1A4F00
   - **timestamps**:
     - **2025/04/30 17:31:08:559**:
       - **thread_state**: Condition Wait
@@ -595,9 +148,41 @@
         - java/util/concurrent/ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
         - java/lang/Thread.runWith(Thread.java:1608)
         - java/lang/Thread.run(Thread.java:1595)
-- **pool-1-thread-2_0x000000011B8FF100,**:
+
+### Breakdown of Timestamp: 2025/04/30 17:31:08:559
+- **Thread State**: Condition Wait
+  - The thread is waiting for a specific condition to be met.
+- **CPU Usage**: 0.022676000
+  - The thread has used 0.022676 seconds of CPU time.
+- **Blocked On**: Not Applicable
+  - The thread is not blocked on any resource.
+- **Java Call Stack**:
+  - **java/lang/Thread.sleepImpl(Native Method)**
+    - The thread is executing the sleepImpl method in the Thread class, which is a native method.
+  - **java/lang/Thread.sleep(Thread.java:516)**
+    - The thread is executing the sleep method in the Thread class at line 516.
+  - **DataPipelineExecutor.runJobWithIO(DataPipelineExecutor.java:92)**
+    - The thread is executing the runJobWithIO method in the DataPipelineExecutor class at line 92.
+  - **DataPipelineExecutor.lambda$main$0(DataPipelineExecutor.java:39)**
+    - The thread is executing a lambda expression in the DataPipelineExecutor class at line 39.
+  - **DataPipelineExecutor$$Lambda/0x00000000318d0e88.run(Bytecode PC:4)**
+    - The thread is executing a lambda-generated method.
+  - **java/util/concurrent/Executors$RunnableAdapter.call(Executors.java:572)**
+    - The thread is executing the call method in the RunnableAdapter class at line 572.
+  - **java/util/concurrent/FutureTask.run(FutureTask.java:317)**
+    - The thread is executing the run method in the FutureTask class at line 317.
+  - **java/util/concurrent/ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)**
+    - The thread is executing the runWorker method in the ThreadPoolExecutor class at line 1144.
+  - **java/util/concurrent/ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)**
+    - The thread is executing the run method in the Worker class at line 642.
+  - **java/lang/Thread.runWith(Thread.java:1608)**
+    - The thread is executing the runWith method in the Thread class at line 1608.
+  - **java/lang/Thread.run(Thread.java:1595)**
+    - The thread is executing the run method in the Thread class at line 1595.
+
+### - **pool-1-thread-2_0x000000011B8FF100**:
   - **thread_name**: pool-1-thread-2
-  - **J9VMThread**: 0x000000011B8FF100,
+  - **J9VMThread**: 0x000000011B8FF100
   - **timestamps**:
     - **2025/04/30 17:31:08:559**:
       - **thread_state**: Blocked
@@ -647,9 +232,40 @@
         - java/util/concurrent/ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
         - java/lang/Thread.runWith(Thread.java:1608)
         - java/lang/Thread.run(Thread.java:1595)
-- **pool-1-thread-3_0x000000011B905300,**:
+
+### Breakdown of Timestamp: 2025/04/30 17:31:08:559
+- **Thread State**: Blocked
+  - The thread is waiting for a resource to become available.
+- **CPU Usage**: 0.003229000
+  - The thread has used 0.003229 seconds of CPU time.
+- **Blocked On**:
+  - **Object**: java/lang/Object@0x0000000300059FD0
+    - The thread is waiting for an Object.
+  - **Owned By**: pool-1-thread-1
+    - The object is currently held by the thread named pool-1-thread-1.
+- **Java Call Stack**:
+  - **DataPipelineExecutor.runJobWithIO(DataPipelineExecutor.java:71)**
+    - The thread is executing the runJobWithIO method in the DataPipelineExecutor class at line 71.
+  - **DataPipelineExecutor.lambda$main$0(DataPipelineExecutor.java:39)**
+    - The thread is executing a lambda expression in the DataPipelineExecutor class at line 39.
+  - **DataPipelineExecutor$$Lambda/0x00000000318d0e88.run(Bytecode PC:4)**
+    - The thread is executing a lambda-generated method.
+  - **java/util/concurrent/Executors$RunnableAdapter.call(Executors.java:572)**
+    - The thread is executing the call method in the RunnableAdapter class at line 572.
+  - **java/util/concurrent/FutureTask.run(FutureTask.java:317)**
+    - The thread is executing the run method in the FutureTask class at line 317.
+  - **java/util/concurrent/ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)**
+    - The thread is executing the runWorker method in the ThreadPoolExecutor class at line 1144.
+  - **java/util/concurrent/ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)**
+    - The thread is executing the run method in the Worker class at line 642.
+  - **java/lang/Thread.runWith(Thread.java:1608)**
+    - The thread is executing the runWith method in the Thread class at line 1608.
+  - **java/lang/Thread.run(Thread.java:1595)**
+    - The thread is executing the run method in the Thread class at line 1595.
+
+### - **pool-1-thread-3_0x000000011B905300**:
   - **thread_name**: pool-1-thread-3
-  - **J9VMThread**: 0x000000011B905300,
+  - **J9VMThread**: 0x000000011B905300
   - **timestamps**:
     - **2025/04/30 17:31:08:559**:
       - **thread_state**: Blocked
@@ -699,9 +315,40 @@
         - java/util/concurrent/ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
         - java/lang/Thread.runWith(Thread.java:1608)
         - java/lang/Thread.run(Thread.java:1595)
-- **pool-1-thread-4_0x000000011B90D100,**:
+
+### Breakdown of Timestamp: 2025/04/30 17:31:08:559
+- **Thread State**: Blocked
+  - The thread is waiting for a resource to become available.
+- **CPU Usage**: 0.004144000
+  - The thread has used 0.004144 seconds of CPU time.
+- **Blocked On**:
+  - **Object**: java/lang/Object@0x0000000300059FD0
+    - The thread is waiting for an Object.
+  - **Owned By**: pool-1-thread-1
+    - The object is currently held by the thread named pool-1-thread-1.
+- **Java Call Stack**:
+  - **DataPipelineExecutor.runJobWithIO(DataPipelineExecutor.java:71)**
+    - The thread is executing the runJobWithIO method in the DataPipelineExecutor class at line 71.
+  - **DataPipelineExecutor.lambda$main$0(DataPipelineExecutor.java:39)**
+    - The thread is executing a lambda expression in the DataPipelineExecutor class at line 39.
+  - **DataPipelineExecutor$$Lambda/0x00000000318d0e88.run(Bytecode PC:4)**
+    - The thread is executing a lambda-generated method.
+  - **java/util/concurrent/Executors$RunnableAdapter.call(Executors.java:572)**
+    - The thread is executing the call method in the RunnableAdapter class at line 572.
+  - **java/util/concurrent/FutureTask.run(FutureTask.java:317)**
+    - The thread is executing the run method in the FutureTask class at line 317.
+  - **java/util/concurrent/ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144(Compiled Code))**
+    - The thread is executing the runWorker method in the ThreadPoolExecutor class at line 1144.
+  - **java/util/concurrent/ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)**
+    - The thread is executing the run method in the Worker class at line 642.
+  - **java/lang/Thread.runWith(Thread.java:1608)**
+    - The thread is executing the runWith method in the Thread class at line 1608.
+  - **java/lang/Thread.run(Thread.java:1595)**
+    - The thread is executing the run method in the Thread class at line 1595.
+
+### - **pool-1-thread-4_0x000000011B90D100**:
   - **thread_name**: pool-1-thread-4
-  - **J9VMThread**: 0x000000011B90D100,
+  - **J9VMThread**: 0x000000011B90D100
   - **timestamps**:
     - **2025/04/30 17:31:08:559**:
       - **thread_state**: Blocked
@@ -751,9 +398,40 @@
         - java/util/concurrent/ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
         - java/lang/Thread.runWith(Thread.java:1608)
         - java/lang/Thread.run(Thread.java:1595)
-- **pool-1-thread-5_0x000000011B913D00,**:
+
+### Breakdown of Timestamp: 2025/04/30 17:31:08:559
+- **Thread State**: Blocked
+  - The thread is waiting for a resource to become available.
+- **CPU Usage**: 0.003684000
+  - The thread has used 0.003684 seconds of CPU time.
+- **Blocked On**:
+  - **Object**: java/lang/Object@0x0000000300059FD0
+    - The thread is waiting for an Object.
+  - **Owned By**: pool-1-thread-1
+    - The object is currently held by the thread named pool-1-thread-1.
+- **Java Call Stack**:
+  - **DataPipelineExecutor.runJobWithIO(DataPipelineExecutor.java:71)**
+    - The thread is executing the runJobWithIO method in the DataPipelineExecutor class at line 71.
+  - **DataPipelineExecutor.lambda$main$0(DataPipelineExecutor.java:39)**
+    - The thread is executing a lambda expression in the DataPipelineExecutor class at line 39.
+  - **DataPipelineExecutor$$Lambda/0x00000000318d0e88.run(Bytecode PC:4)**
+    - The thread is executing a lambda-generated method.
+  - **java/util/concurrent/Executors$RunnableAdapter.call(Executors.java:572)**
+    - The thread is executing the call method in the RunnableAdapter class at line 572.
+  - **java/util/concurrent/FutureTask.run(FutureTask.java:317)**
+    - The thread is executing the run method in the FutureTask class at line 317.
+  - **java/util/concurrent/ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144(Compiled Code))**
+    - The thread is executing the runWorker method in the ThreadPoolExecutor class at line 1144.
+  - **java/util/concurrent/ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)**
+    - The thread is executing the run method in the Worker class at line 642.
+  - **java/lang/Thread.runWith(Thread.java:1608)**
+    - The thread is executing the runWith method in the Thread class at line 1608.
+  - **java/lang/Thread.run(Thread.java:1595)**
+    - The thread is executing the run method in the Thread class at line 1595.
+
+### - **pool-1-thread-5_0x000000011B913D00**:
   - **thread_name**: pool-1-thread-5
-  - **J9VMThread**: 0x000000011B913D00,
+  - **J9VMThread**: 0x000000011B913D00
   - **timestamps**:
     - **2025/04/30 17:31:08:559**:
       - **thread_state**: Blocked
@@ -803,3 +481,139 @@
         - java/util/concurrent/ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
         - java/lang/Thread.runWith(Thread.java:1608)
         - java/lang/Thread.run(Thread.java:1595)
+
+### Breakdown of Timestamp: 2025/04/30 17:31:08:559
+- **Thread State**: Blocked
+  - The thread is waiting for a resource to become available.
+- **CPU Usage**: 0.004614000
+  - The thread has used 0.004614 seconds of CPU time.
+- **Blocked On**:
+  - **Object**: java/lang/Object@0x0000000300059FD0
+    - The thread is waiting for an Object.
+  - **Owned By**: pool-1-thread-1
+    - The object is currently held by the thread named pool-1-thread-1.
+- **Java Call Stack**:
+  - **DataPipelineExecutor.runJobWithIO(DataPipelineExecutor.java:71)**
+    - The thread is executing the runJobWithIO method in the DataPipelineExecutor class at line 71.
+  - **DataPipelineExecutor.lambda$main$0(DataPipelineExecutor.java:39)**
+    - The thread is executing a lambda expression in the DataPipelineExecutor class at line 39.
+  - **DataPipelineExecutor$$Lambda/0x00000000318d0e88.run(Bytecode PC:4)**
+    - The thread is executing a lambda-generated method.
+  - **java/util/concurrent/Executors$RunnableAdapter.call(Executors.java:572)**
+    - The thread is executing the call method in the RunnableAdapter class at line 572.
+  - **java/util/concurrent/FutureTask.run(FutureTask.java:317)**
+    - The thread is executing the run method in the FutureTask class at line 317.
+  - **java/util/concurrent/ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144(Compiled Code))**
+    - The thread is executing the runWorker method in the ThreadPoolExecutor class at line 1144.
+  - **java/util/concurrent/ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)**
+    - The thread is executing the run method in the Worker class at line 642.
+  - **java/lang/Thread.runWith(Thread.java:1608)**
+    - The thread is executing the runWith method in the Thread class at line 1608.
+  - **java/lang/Thread.run(Thread.java:1595)**
+    - The thread is executing the run method in the Thread class at line 1595.
+
+### - **Worker-1_0x000000013D1A2C00**:
+  - **thread_name**: Worker-1  
+  - **J9VMThread**: 0x000000013D1A2C00  
+  - **timestamps**:
+    - **2025/04/30 17:31:08:559**:
+      - **thread_state**: Runnable  
+      - **cpu_usage**: 2.513674000  
+      - **blocked_on**: Not Applicable  
+      - **Java_Call_Stack**:
+        - com/example/pipeline/TaskProcessor.process(TaskProcessor.java:85)  
+        - com/example/pipeline/Worker.run(Worker.java:42)  
+        - java/lang/Thread.run(Thread.java:833)
+    - **2025/04/30 17:31:48:655**:
+      - **thread_state**: Runnable  
+      - **cpu_usage**: 2.679001000  
+      - **blocked_on**: Not Applicable  
+      - **Java_Call_Stack**:
+        - com/example/pipeline/TaskProcessor.process(TaskProcessor.java:91)  
+        - com/example/pipeline/Worker.run(Worker.java:42)  
+        - java/lang/Thread.run(Thread.java:833)
+    - **2025/04/30 17:32:38:800**:
+      - **thread_state**: Waiting  
+      - **cpu_usage**: 0.015301000  
+      - **blocked_on**: Not Applicable  
+      - **Java_Call_Stack**:
+        - java/util/concurrent/locks/LockSupport.park(LockSupport.java:194)  
+        - java/util/concurrent/SynchronousQueue$TransferStack.awaitFulfill(SynchronousQueue.java:460)  
+        - java/util/concurrent/SynchronousQueue.take(SynchronousQueue.java:924)  
+        - java/util/concurrent/ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1053)  
+        - java/util/concurrent/ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1113)  
+        - java/util/concurrent/ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)  
+        - java/lang/Thread.run(Thread.java:833)
+
+### Breakdown of Timestamp: 2025/04/30 17:31:08:559
+- **Thread State**: Runnable
+  - The thread is ready to run and is waiting for CPU time.
+- **CPU Usage**: 2.513674000
+  - The thread has used 2.513674 seconds of CPU time.
+- **Blocked On**: Not Applicable
+  - The thread is not blocked on any resource.
+- **Java Call Stack**:
+  - **com/example/pipeline/TaskProcessor.process(TaskProcessor.java:85)**
+    - The thread is executing the process method in the TaskProcessor class at line 85.
+  - **com/example/pipeline/Worker.run(Worker.java:42)**
+    - The thread is executing the run method in the Worker class at line 42.
+  - **java/lang/Thread.run(Thread.java:833)**
+    - The thread is executing the run method in the Thread class at line 833.
+
+### - **Worker-2_0x000000013D1A2D00**:
+  - **thread_name**: Worker-2  
+  - **J9VMThread**: 0x000000013D1A2D00  
+  - **timestamps**:
+    - **2025/04/30 17:31:08:559**:
+      - **thread_state**: Blocked  
+      - **cpu_usage**: 0.005120000  
+      - **blocked_on**:
+        - **Object**: java/util/concurrent/locks/ReentrantLock@0x000000030007AF10  
+        - **Owned By**: Worker-5  
+      - **Java_Call_Stack**:
+        - com/example/pipeline/TaskQueue.enqueue(TaskQueue.java:102)  
+        - com/example/pipeline/TaskRetrier.retry(TaskRetrier.java:67)  
+        - com/example/pipeline/Worker.run(Worker.java:48)  
+        - java/lang/Thread.run(Thread.java:833)
+    - **2025/04/30 17:31:48:655**:
+      - **thread_state**: Blocked  
+      - **cpu_usage**: 0.006230000  
+      - **blocked_on**:
+        - **Object**: java/util/concurrent/locks/ReentrantLock@0x000000030007AF10  
+        - **Owned By**: Worker-9
+      - **Java_Call_Stack**:
+        - com/example/pipeline/TaskQueue.enqueue(TaskQueue.java:102)  
+        - com/example/pipeline/TaskRetrier.retry(TaskRetrier.java:67)  
+        - com/example/pipeline/Worker.run(Worker.java:48)  
+        - java/lang/Thread.run(Thread.java:833)
+    - **2025/04/30 17:32:38:800**:
+      - **thread_state**: Blocked  
+      - **cpu_usage**: 0.009870000  
+      - **blocked_on**:
+        - **Object**: java/util/concurrent/locks/ReentrantLock@0x000000030007AF10  
+        - **Owned By**: Worker-8  
+      - **Java_Call_Stack**:
+        - com/example/pipeline/TaskQueue.enqueue(TaskQueue.java:102)  
+        - com/example/pipeline/TaskRetrier.retry(TaskRetrier.java:67)  
+        - com/example/pipeline/Worker.run(Worker.java:48)  
+        - java/lang/Thread.run(Thread.java:833)
+
+### Breakdown of Timestamp: 2025/04/30 17:31:08:559
+- **Thread State**: Blocked
+  - The thread is waiting for a resource to become available.
+- **CPU Usage**: 0.005120000
+  - The thread has used 0.00512 seconds of CPU time.
+- **Blocked On**:
+  - **Object**: java/util/concurrent/locks/ReentrantLock@0x000000030007AF10
+    - The thread is waiting for a ReentrantLock object.
+  - **Owned By**: Worker-5
+    - The lock is currently held by the thread named Worker-5.
+- **Java Call Stack**:
+  - **com/example/pipeline/TaskQueue.enqueue(TaskQueue.java:102)**
+    - The thread is executing the enqueue method in the TaskQueue class at line 102.
+  - **com/example/pipeline/TaskRetrier.retry(TaskRetrier.java:67)**
+    - The thread is executing the retry method in the TaskRetrier class at line 67.
+  - **com/example/pipeline/Worker.run(Worker.java:48)**
+    - The thread is executing the run method in the Worker class at line 48.
+  - **java/lang/Thread.run(Thread.java:833)**
+    - The thread is executing the run method in the Thread class at line 833.
