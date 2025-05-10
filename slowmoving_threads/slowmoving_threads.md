@@ -75,26 +75,19 @@ Let's break down one of the timestamps as an example:
 
 ### Breakdown of Timestamp: 2025/04/30 17:33:08:559
 - **Thread State**: Blocked
-  - The thread is waiting for a resource to become available.
 - **CPU Usage**: 0.012340000
-  - The thread has used 0.01234 seconds of CPU time.
 - **Blocked On**:
   - **Object**: java/util/concurrent/locks/ReentrantLock@0x000000030007BF20
-    - The thread is waiting for a ReentrantLock object.
   - **Owned By**: Worker-7
-    - The lock is currently held by the thread named Worker-7.
 - **Java Call Stack**:
   - **com/example/pipeline/TaskQueue.dequeue(TaskQueue.java:120)**
-    - The thread is executing the dequeue method in the TaskQueue class at line 120.
   - **com/example/pipeline/TaskProcessor.process(TaskProcessor.java:89)**
-    - The thread is executing the process method in the TaskProcessor class at line 89.
   - **com/example/pipeline/Worker.run(Worker.java:48)**
-    - The thread is executing the run method in the Worker class at line 48.
   - **java/lang/Thread.run(Thread.java:833)**
-    - The thread is executing the run method in the Thread class at line 833.
+
 
 ## Additional Examples
-Here are 7 more examples of similar threads, with one timestamp explained in each.
+
 
 ### - **pool-1-thread-1_0x000000012C1A4F00**:
   - **thread_name**: pool-1-thread-1
@@ -151,34 +144,20 @@ Here are 7 more examples of similar threads, with one timestamp explained in eac
 
 ### Breakdown of Timestamp: 2025/04/30 17:31:08:559
 - **Thread State**: Condition Wait
-  - The thread is waiting for a specific condition to be met.
 - **CPU Usage**: 0.022676000
-  - The thread has used 0.022676 seconds of CPU time.
 - **Blocked On**: Not Applicable
-  - The thread is not blocked on any resource.
 - **Java Call Stack**:
   - **java/lang/Thread.sleepImpl(Native Method)**
-    - The thread is executing the sleepImpl method in the Thread class, which is a native method.
   - **java/lang/Thread.sleep(Thread.java:516)**
-    - The thread is executing the sleep method in the Thread class at line 516.
   - **DataPipelineExecutor.runJobWithIO(DataPipelineExecutor.java:92)**
-    - The thread is executing the runJobWithIO method in the DataPipelineExecutor class at line 92.
   - **DataPipelineExecutor.lambda$main$0(DataPipelineExecutor.java:39)**
-    - The thread is executing a lambda expression in the DataPipelineExecutor class at line 39.
   - **DataPipelineExecutor$$Lambda/0x00000000318d0e88.run(Bytecode PC:4)**
-    - The thread is executing a lambda-generated method.
   - **java/util/concurrent/Executors$RunnableAdapter.call(Executors.java:572)**
-    - The thread is executing the call method in the RunnableAdapter class at line 572.
   - **java/util/concurrent/FutureTask.run(FutureTask.java:317)**
-    - The thread is executing the run method in the FutureTask class at line 317.
   - **java/util/concurrent/ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)**
-    - The thread is executing the runWorker method in the ThreadPoolExecutor class at line 1144.
   - **java/util/concurrent/ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)**
-    - The thread is executing the run method in the Worker class at line 642.
   - **java/lang/Thread.runWith(Thread.java:1608)**
-    - The thread is executing the runWith method in the Thread class at line 1608.
   - **java/lang/Thread.run(Thread.java:1595)**
-    - The thread is executing the run method in the Thread class at line 1595.
 
 ### - **pool-1-thread-2_0x000000011B8FF100**:
   - **thread_name**: pool-1-thread-2
@@ -235,33 +214,20 @@ Here are 7 more examples of similar threads, with one timestamp explained in eac
 
 ### Breakdown of Timestamp: 2025/04/30 17:31:08:559
 - **Thread State**: Blocked
-  - The thread is waiting for a resource to become available.
 - **CPU Usage**: 0.003229000
-  - The thread has used 0.003229 seconds of CPU time.
 - **Blocked On**:
   - **Object**: java/lang/Object@0x0000000300059FD0
-    - The thread is waiting for an Object.
   - **Owned By**: pool-1-thread-1
-    - The object is currently held by the thread named pool-1-thread-1.
 - **Java Call Stack**:
   - **DataPipelineExecutor.runJobWithIO(DataPipelineExecutor.java:71)**
-    - The thread is executing the runJobWithIO method in the DataPipelineExecutor class at line 71.
   - **DataPipelineExecutor.lambda$main$0(DataPipelineExecutor.java:39)**
-    - The thread is executing a lambda expression in the DataPipelineExecutor class at line 39.
   - **DataPipelineExecutor$$Lambda/0x00000000318d0e88.run(Bytecode PC:4)**
-    - The thread is executing a lambda-generated method.
   - **java/util/concurrent/Executors$RunnableAdapter.call(Executors.java:572)**
-    - The thread is executing the call method in the RunnableAdapter class at line 572.
   - **java/util/concurrent/FutureTask.run(FutureTask.java:317)**
-    - The thread is executing the run method in the FutureTask class at line 317.
   - **java/util/concurrent/ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)**
-    - The thread is executing the runWorker method in the ThreadPoolExecutor class at line 1144.
   - **java/util/concurrent/ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)**
-    - The thread is executing the run method in the Worker class at line 642.
-  - **java/lang/Thread.runWith(Thread.java:1608)**
-    - The thread is executing the runWith method in the Thread class at line 1608.
   - **java/lang/Thread.run(Thread.java:1595)**
-    - The thread is executing the run method in the Thread class at line 1595.
+
 
 ### - **pool-1-thread-3_0x000000011B905300**:
   - **thread_name**: pool-1-thread-3
@@ -318,33 +284,21 @@ Here are 7 more examples of similar threads, with one timestamp explained in eac
 
 ### Breakdown of Timestamp: 2025/04/30 17:31:08:559
 - **Thread State**: Blocked
-  - The thread is waiting for a resource to become available.
 - **CPU Usage**: 0.004144000
-  - The thread has used 0.004144 seconds of CPU time.
 - **Blocked On**:
   - **Object**: java/lang/Object@0x0000000300059FD0
-    - The thread is waiting for an Object.
   - **Owned By**: pool-1-thread-1
-    - The object is currently held by the thread named pool-1-thread-1.
 - **Java Call Stack**:
   - **DataPipelineExecutor.runJobWithIO(DataPipelineExecutor.java:71)**
-    - The thread is executing the runJobWithIO method in the DataPipelineExecutor class at line 71.
   - **DataPipelineExecutor.lambda$main$0(DataPipelineExecutor.java:39)**
-    - The thread is executing a lambda expression in the DataPipelineExecutor class at line 39.
   - **DataPipelineExecutor$$Lambda/0x00000000318d0e88.run(Bytecode PC:4)**
-    - The thread is executing a lambda-generated method.
   - **java/util/concurrent/Executors$RunnableAdapter.call(Executors.java:572)**
-    - The thread is executing the call method in the RunnableAdapter class at line 572.
   - **java/util/concurrent/FutureTask.run(FutureTask.java:317)**
-    - The thread is executing the run method in the FutureTask class at line 317.
   - **java/util/concurrent/ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144(Compiled Code))**
-    - The thread is executing the runWorker method in the ThreadPoolExecutor class at line 1144.
   - **java/util/concurrent/ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)**
-    - The thread is executing the run method in the Worker class at line 642.
   - **java/lang/Thread.runWith(Thread.java:1608)**
-    - The thread is executing the runWith method in the Thread class at line 1608.
   - **java/lang/Thread.run(Thread.java:1595)**
-    - The thread is executing the run method in the Thread class at line 1595.
+
 
 ### - **pool-1-thread-4_0x000000011B90D100**:
   - **thread_name**: pool-1-thread-4
@@ -401,33 +355,21 @@ Here are 7 more examples of similar threads, with one timestamp explained in eac
 
 ### Breakdown of Timestamp: 2025/04/30 17:31:08:559
 - **Thread State**: Blocked
-  - The thread is waiting for a resource to become available.
 - **CPU Usage**: 0.003684000
-  - The thread has used 0.003684 seconds of CPU time.
 - **Blocked On**:
   - **Object**: java/lang/Object@0x0000000300059FD0
-    - The thread is waiting for an Object.
   - **Owned By**: pool-1-thread-1
-    - The object is currently held by the thread named pool-1-thread-1.
 - **Java Call Stack**:
   - **DataPipelineExecutor.runJobWithIO(DataPipelineExecutor.java:71)**
-    - The thread is executing the runJobWithIO method in the DataPipelineExecutor class at line 71.
   - **DataPipelineExecutor.lambda$main$0(DataPipelineExecutor.java:39)**
-    - The thread is executing a lambda expression in the DataPipelineExecutor class at line 39.
   - **DataPipelineExecutor$$Lambda/0x00000000318d0e88.run(Bytecode PC:4)**
-    - The thread is executing a lambda-generated method.
   - **java/util/concurrent/Executors$RunnableAdapter.call(Executors.java:572)**
-    - The thread is executing the call method in the RunnableAdapter class at line 572.
   - **java/util/concurrent/FutureTask.run(FutureTask.java:317)**
-    - The thread is executing the run method in the FutureTask class at line 317.
   - **java/util/concurrent/ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144(Compiled Code))**
-    - The thread is executing the runWorker method in the ThreadPoolExecutor class at line 1144.
   - **java/util/concurrent/ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)**
-    - The thread is executing the run method in the Worker class at line 642.
   - **java/lang/Thread.runWith(Thread.java:1608)**
-    - The thread is executing the runWith method in the Thread class at line 1608.
   - **java/lang/Thread.run(Thread.java:1595)**
-    - The thread is executing the run method in the Thread class at line 1595.
+
 
 ### - **pool-1-thread-5_0x000000011B913D00**:
   - **thread_name**: pool-1-thread-5
@@ -484,33 +426,21 @@ Here are 7 more examples of similar threads, with one timestamp explained in eac
 
 ### Breakdown of Timestamp: 2025/04/30 17:31:08:559
 - **Thread State**: Blocked
-  - The thread is waiting for a resource to become available.
 - **CPU Usage**: 0.004614000
-  - The thread has used 0.004614 seconds of CPU time.
 - **Blocked On**:
   - **Object**: java/lang/Object@0x0000000300059FD0
-    - The thread is waiting for an Object.
   - **Owned By**: pool-1-thread-1
-    - The object is currently held by the thread named pool-1-thread-1.
 - **Java Call Stack**:
   - **DataPipelineExecutor.runJobWithIO(DataPipelineExecutor.java:71)**
-    - The thread is executing the runJobWithIO method in the DataPipelineExecutor class at line 71.
   - **DataPipelineExecutor.lambda$main$0(DataPipelineExecutor.java:39)**
-    - The thread is executing a lambda expression in the DataPipelineExecutor class at line 39.
   - **DataPipelineExecutor$$Lambda/0x00000000318d0e88.run(Bytecode PC:4)**
-    - The thread is executing a lambda-generated method.
   - **java/util/concurrent/Executors$RunnableAdapter.call(Executors.java:572)**
-    - The thread is executing the call method in the RunnableAdapter class at line 572.
   - **java/util/concurrent/FutureTask.run(FutureTask.java:317)**
-    - The thread is executing the run method in the FutureTask class at line 317.
   - **java/util/concurrent/ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144(Compiled Code))**
-    - The thread is executing the runWorker method in the ThreadPoolExecutor class at line 1144.
   - **java/util/concurrent/ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)**
-    - The thread is executing the run method in the Worker class at line 642.
   - **java/lang/Thread.runWith(Thread.java:1608)**
-    - The thread is executing the runWith method in the Thread class at line 1608.
   - **java/lang/Thread.run(Thread.java:1595)**
-    - The thread is executing the run method in the Thread class at line 1595.
+
 
 ### - **Worker-1_0x000000013D1A2C00**:
   - **thread_name**: Worker-1  
@@ -547,18 +477,12 @@ Here are 7 more examples of similar threads, with one timestamp explained in eac
 
 ### Breakdown of Timestamp: 2025/04/30 17:31:08:559
 - **Thread State**: Runnable
-  - The thread is ready to run and is waiting for CPU time.
 - **CPU Usage**: 2.513674000
-  - The thread has used 2.513674 seconds of CPU time.
 - **Blocked On**: Not Applicable
-  - The thread is not blocked on any resource.
 - **Java Call Stack**:
   - **com/example/pipeline/TaskProcessor.process(TaskProcessor.java:85)**
-    - The thread is executing the process method in the TaskProcessor class at line 85.
   - **com/example/pipeline/Worker.run(Worker.java:42)**
-    - The thread is executing the run method in the Worker class at line 42.
   - **java/lang/Thread.run(Thread.java:833)**
-    - The thread is executing the run method in the Thread class at line 833.
 
 ### - **Worker-2_0x000000013D1A2D00**:
   - **thread_name**: Worker-2  
@@ -600,20 +524,11 @@ Here are 7 more examples of similar threads, with one timestamp explained in eac
 
 ### Breakdown of Timestamp: 2025/04/30 17:31:08:559
 - **Thread State**: Blocked
-  - The thread is waiting for a resource to become available.
 - **CPU Usage**: 0.005120000
-  - The thread has used 0.00512 seconds of CPU time.
 - **Blocked On**:
   - **Object**: java/util/concurrent/locks/ReentrantLock@0x000000030007AF10
-    - The thread is waiting for a ReentrantLock object.
-  - **Owned By**: Worker-5
-    - The lock is currently held by the thread named Worker-5.
 - **Java Call Stack**:
   - **com/example/pipeline/TaskQueue.enqueue(TaskQueue.java:102)**
-    - The thread is executing the enqueue method in the TaskQueue class at line 102.
   - **com/example/pipeline/TaskRetrier.retry(TaskRetrier.java:67)**
-    - The thread is executing the retry method in the TaskRetrier class at line 67.
   - **com/example/pipeline/Worker.run(Worker.java:48)**
-    - The thread is executing the run method in the Worker class at line 48.
   - **java/lang/Thread.run(Thread.java:833)**
-    - The thread is executing the run method in the Thread class at line 833.
